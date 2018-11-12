@@ -294,6 +294,8 @@ describe ManageIQ::Automate::Transformation::TransformationThrottler::Utils do
       allow(svc_model_conversion_host_1).to receive(:eligible?).and_return(true)
       described_class.schedule_tasks_fifo(ae_service)
       expect(svc_model_transformation_task_1.conversion_host.id).to eq(svc_model_conversion_host_1.id)
+      expect(svc_model_transformation_task_1.get_option('transformation_host_id')).to eq(svc_model_conversion_host_1.id)
+      expect(svc_model_transformation_task_1.get_option('transformation_host_name')).to eq(svc_model_conversion_host_1.name)
     end
   end
 

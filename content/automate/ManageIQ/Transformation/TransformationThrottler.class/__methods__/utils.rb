@@ -95,6 +95,8 @@ module ManageIQ
               transformation_host = get_transformation_host(transformation_task, {}, handle)
               break if transformation_host.nil?
               transformation_task.conversion_host = transformation_host
+              transformation_task.set_option('transformation_host_id', transformation_host.id)
+              transformation_task.set_option('transformation_host_name', transformation_host.name)
             end
           end
 
